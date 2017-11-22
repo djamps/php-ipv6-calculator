@@ -1,6 +1,7 @@
 <!--
 PHP Subnet Calculator v1.3.
 Copyright 01/11/2012 Randy McAnally
+Additional contribution copyright 2017-11-21 Link Porterfield
 Released under GNU GPL.
 Special thanks to krischan at jodies.cx for ipcalc.pl http://jodies.de/ipcalc
 The presentation and concept was mostly taken from ipcalc.pl.
@@ -73,7 +74,7 @@ $subNetCdr = $_REQUEST['subnet'];
 $subNetMask = ''; // optional
 
 // Calculate supernet mask and cdr
-if (ereg('/',$superNet)){  //if cidr type mask
+if (preg_match('~/~',$superNet)){  //if cidr type mask
 	$charHost = inet_pton(strtok($superNet, '/'));
 	$charMask = _cdr2Char(strtok('/'),strlen($charHost));
 } else {
